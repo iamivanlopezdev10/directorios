@@ -1,11 +1,234 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+// CONFIGURACIÓN FINAL - COORDINACIONES TUT
+const directorio = [
+	{
+		departamento: "Academia",
+		personal: [
+			{ nombre: "Lic. Cristian Villatoro Ibáñez", cargo: "Coordinador", tel: "9610000000", mail: "academia1@tut.edu.mx", wa: "529610000000" },
+			{ nombre: "Lic. Jesus Fernando Rios", cargo: "Coordinador", tel: "9610000000", mail: "academia2@tut.edu.mx", wa: "529610000000" },
+			{ nombre: "Lic. Blanca Iris Torres Gutiérrez", cargo: "Coordinadora", tel: "9610000000", mail: "enfermeria@tut.edu.mx", wa: "529610000000" },
+			{ nombre: "Ing. Mauricio Coronel Mesa", cargo: "Coordinador", tel: "9610000000", mail: "ingles@tut.edu.mx", wa: "529610000000" },
+		]
+	},
+	{
+		departamento: "Finanzas",
+		personal: [
+			{ nombre: "Lic. Eron (Apellido)", cargo: "Coordinador", tel: "9610000000", mail: "finanzas@tut.edu.mx", wa: "529610000000" },
+		]
+	},
+	{
+		departamento: "Sistemas",
+		personal: [
+			{ nombre: "Ing. Ivan de Jesus Ramirez Lopez", cargo: "Coordinador", tel: "9610000000", mail: "sistemas@tut.edu.mx", wa: "529610000000" },
+		]
+	},
+	{
+		departamento: "Vinculación",
+		personal: [
+			{ nombre: "Lic. Carolina Moguel Ramos", cargo: "Coordinadora", tel: "9610000000", mail: "vinculacion@tut.edu.mx", wa: "529610000000" },
+		]
+	},
+	{
+		departamento: "Community Manager",
+		personal: [
+			{ nombre: "Lic. Luis Enrique Sánchez Hidalgo", cargo: "Coordinador", tel: "9610000000", mail: "ccm@tut.edu.mx", wa: "529610000000" },
+		]
+	},
+	{
+		departamento: "Marketing",
+		personal: [
+			{ nombre: "Lic. Fredy Alberto Morales Noriega", cargo: "Coordinador", tel: "9610000000", mail: "marketing@tut.edu.mx", wa: "529610000000" },
+		]
+	},
+	{
+		departamento: "Servicios Escolares",
+		personal: [
+			{ nombre: "Lic. Yoni Gómez Montejo", cargo: "Coordinador", tel: "9610000000", mail: "escolares@tut.edu.mx", wa: "529610000000" },
+		]
+	}
+];
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const LOGO_URL = "https://res.cloudinary.com/du9yqkkdg/image/upload/v1768422714/LOGO_TUT_COLOR_SIN_FONDO_1_1_qfyne4.png";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Directorio TUT | Coordinaciones</title>
+	<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+	<main>
+		<header class="main-header">
+			<img src={LOGO_URL} alt="Logo TUT" class="logo">
+			<div class="divider"></div>
+			<p class="tagline">Directorio Oficial de Coordinaciones</p>
+		</header>
+		
+		<div class="search-box">
+			<div class="pill">
+				<span class="search-icon">🔍</span>
+				<input type="text" id="buscador" placeholder="Buscar área o coordinador...">
+			</div>
+		</div>
+
+		<div class="deptos-grid">
+			{directorio.map((depto) => (
+				<div class="depto-card">
+					<button class="trigger">
+						<div class="depto-info">
+							<span class="depto-name">{depto.departamento}</span>
+							<span class="depto-count">{depto.personal.length} {depto.personal.length === 1 ? 'Coordinador' : 'Integrantes'}</span>
+						</div>
+						<div class="chevron">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg>
+						</div>
+					</button>
+
+					<div class="panel">
+						<div class="personal-stack">
+							{depto.personal.map((p) => (
+								<div class="user-item">
+									<div class="user-meta">
+										<div class="user-avatar">{p.nombre[5]}</div>
+										<div class="user-data">
+											<h3>{p.nombre}</h3>
+											<span class="user-role">{p.cargo}</span>
+										</div>
+									</div>
+									<div class="user-actions">
+										<a href={`tel:${p.tel}`} class="btn-call" title="Llamar">📞</a>
+										<a href={`https://wa.me/${p.wa}`} target="_blank" class="icon-btn wa">
+											<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" width="16">
+										</a>
+										<a href={`mailto:${p.mail}`} class="icon-btn mail">✉️</a>
+									</div>
+								</div>
+							))}
+						</div>
+					</div>
+				</div>
+			))}
+		</div>
+
+		<footer class="footer">
+			<p>© 2026 Tecnológico Universitario Tuxtla</p>
+			<span>INNOVACIÓN CON SENTIDO HUMANO</span>
+		</footer>
+	</main>
+
+<style>
+	:root {
+		--tut-blue: #1e2261;
+		--tut-bg: #f8fafc;
+		--text-main: #1e293b;
+		--text-light: #64748b;
+	}
+
+	* { box-sizing: border-box; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+
+	body {
+		margin: 0; background: var(--tut-bg); color: var(--text-main);
+		font-family: 'Plus Jakarta Sans', sans-serif;
+	}
+
+	main { max-width: 900px; margin: 0 auto; padding: 3rem 1rem; }
+
+	.main-header { text-align: center; margin-bottom: 2.5rem; }
+	.logo { max-width: 250px; height: auto; }
+	.divider { width: 35px; height: 3px; background: var(--tut-blue); margin: 1rem auto; border-radius: 10px; }
+	.tagline { font-size: 0.7rem; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 2px; }
+
+	.search-box { position: sticky; top: 1rem; z-index: 100; margin-bottom: 2.5rem; max-width: 500px; margin-inline: auto; }
+	.pill {
+		background: rgba(255,255,255,0.9); backdrop-filter: blur(10px);
+		border: 1px solid #e2e8f0; border-radius: 20px; display: flex; align-items: center; padding: 4px 18px;
+		box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+	}
+	#buscador { width: 100%; padding: 10px; border: none; background: transparent; outline: none; font-size: 0.95rem; }
+
+	/* GRID DE DEPARTAMENTOS (2 columnas) */
+	.deptos-grid { 
+		display: grid; 
+		grid-template-columns: repeat(2, 1fr); 
+		gap: 16px; 
+		align-items: start;
+	}
+
+	.depto-card { background: #fff; border: 1px solid #edf2f7; border-radius: 20px; overflow: hidden; height: fit-content; }
+	.trigger {
+		width: 100%; padding: 1.25rem; border: none; background: transparent; cursor: pointer;
+		display: flex; align-items: center; justify-content: space-between;
+	}
+	.depto-card.active { border-color: var(--tut-blue); box-shadow: 0 8px 20px rgba(30, 34, 97, 0.06); }
+	.depto-card.active .chevron { transform: rotate(180deg); color: var(--tut-blue); }
+
+	.depto-name { display: block; text-align: left; font-weight: 800; color: var(--tut-blue); font-size: 1rem; }
+	.depto-count { display: block; text-align: left; font-size: 0.7rem; color: var(--text-light); font-weight: 600; }
+
+	.panel { max-height: 0; overflow: hidden; background: #fafbfc; }
+	.depto-card.active .panel { max-height: 2000px; padding-bottom: 1rem; }
+
+	.personal-stack { padding: 0 1rem; display: flex; flex-direction: column; gap: 8px; }
+	.user-item {
+		background: #fff; border: 1px solid #f1f5f9; border-radius: 14px; padding: 0.75rem;
+		display: flex; flex-direction: column; gap: 0.75rem;
+	}
+	.user-meta { display: flex; align-items: center; gap: 0.6rem; }
+	.user-avatar {
+		width: 34px; height: 34px; background: #f0f4ff; color: var(--tut-blue);
+		border-radius: 10px; display: flex; align-items: center; justify-content: center;
+		font-weight: 800; font-size: 0.85rem; flex-shrink: 0;
+	}
+	h3 { margin: 0; font-size: 0.8rem; font-weight: 700; line-height: 1.2; }
+	.user-role { font-size: 0.6rem; color: var(--text-light); font-weight: 700; text-transform: uppercase; }
+
+	.user-actions { 
+		display: flex; 
+		justify-content: center; 
+		gap: 8px; 
+		padding-top: 0.6rem; 
+		border-top: 1px solid #f8fafc;
+	}
+	.btn-call, .icon-btn {
+		width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center;
+		justify-content: center; text-decoration: none; font-size: 0.8rem; border: 1px solid #e2e8f0;
+	}
+	.btn-call { background: var(--tut-blue); color: white; border: none; }
+	.wa { background: #e8f9ee; border-color: #d1f2db; }
+	.mail { background: #f1f5f9; }
+
+	.footer { text-align: center; margin-top: 4rem; padding-bottom: 2rem; opacity: 0.5; }
+	.footer p { font-size: 0.7rem; font-weight: 700; margin: 0; }
+	.footer span { font-size: 0.6rem; font-weight: 800; letter-spacing: 2px; }
+
+	/* MÓVIL: Vuelve a 1 columna */
+	@media (max-width: 700px) {
+		.deptos-grid { grid-template-columns: 1fr; }
+	}
+</style>
+
+<script>
+	document.querySelectorAll('.trigger').forEach(btn => {
+		btn.addEventListener('click', () => {
+			btn.parentElement.classList.toggle('active');
+		});
+	});
+
+	const search = document.getElementById('buscador') as HTMLInputElement;
+	const cards = document.querySelectorAll('.depto-card');
+
+	search?.addEventListener('input', () => {
+		const val = search.value.toLowerCase();
+		cards.forEach(card => {
+			const isMatch = card.textContent?.toLowerCase().includes(val);
+			(card as HTMLElement).style.display = isMatch ? 'block' : 'none';
+			if (val !== '' && isMatch) card.classList.add('active');
+			else if (val === '') card.classList.remove('active');
+		});
+	});
+</script>
+</body>
+</html>

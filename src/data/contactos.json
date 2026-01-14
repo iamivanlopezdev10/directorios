@@ -1,0 +1,6 @@
+[
+  { "nombre": "Servicios Escolares", "cargo": "Ventanilla única", "telefono": "9611234567" },
+  { "nombre": "División de Estudios", "cargo": "Trámites Académicos", "telefono": "9619876543" },
+  { "nombre": "Centro de Cómputo", "cargo": "Soporte Técnico", "telefono": "Ext. 2020" },
+  { "nombre": "Biblioteca", "cargo": "Préstamo de Libros", "telefono": "9615551122" }
+]
