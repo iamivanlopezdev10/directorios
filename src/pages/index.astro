@@ -4,7 +4,7 @@ const directorio = [
     {
         departamento: "Información e Inscripciones",
         personal: [
-            { nombre: "Lic. Freddy Alberto Morales Noriega", cargo: "Coordinador de Marketing", tel: "9613610041", wa: "529611368900" },
+            { nombre: "Lic. Freddy Alberto Morales Noriega", cargo: "Coordinador de Marketing", tel: "9613610041", wa: "529611368900" }
         ]
     },
     {
@@ -12,108 +12,121 @@ const directorio = [
         personal: [
             { nombre: "Mtro. Cristian Villatoro Ibáñez", cargo: "Coordinador Academico", tel: "9612112995", wa: "529612112995" },
             { nombre: "Mtro. Jesús Fernando Ríos Esponda", cargo: "Coordinador Academico", tel: "9613630407", wa: "529613630407" },
-            { nombre: "Mtra. Blanca Iris Torres Gutiérrez", cargo: "Coordinadora de Enfermería", tel: "9617741359", wa: "529617741359" },
+            { nombre: "Mtra. Dulce Yuliana Constantino Rodríguez", cargo: "Coordinadora de Enfermería", tel: "9617741359", wa: "529617741359" },
             { nombre: "Mtro. Mauricio Coronel Meza", cargo: "Coordinador de Inglés", tel: "9613049916", wa: "529613049916" },
-            { nombre: "Lic. Luz Adriana Magaña Vera", cargo: "Asesora Académica", tel: "9613651649", wa: "529613651649" },
+            { nombre: "Lic. Luz Adriana Magaña Vera", cargo: "Asesora Académica", tel: "9613651649", wa: "529613651649" }
         ]
     },
     {
         departamento: "Finanzas",
         personal: [
-            { nombre: "Lic. Humberto Eron Albores Esquinca", cargo: "Coordinador de Finanzas", tel: "9613079510", wa: "529613079510" },
+            { nombre: "Lic. Humberto Eron Albores Esquinca", cargo: "Coordinador de Finanzas", tel: "9613079510", wa: "529613079510" }
         ]
     },
     {
         departamento: "Servicios Escolares",
         personal: [
-            { nombre: "Lic. Yoni Gómez Montejo", cargo: "Coordinador de Servicios Escolares ", tel: "9612050976", wa: "529612050976" },
+            { nombre: "Lic. Yoni Gómez Montejo", cargo: "Coordinador de Servicios Escolares ", tel: "9612050976", wa: "529612050976" }
         ]
     },
     {
         departamento: "Sistemas",
         personal: [
-            { nombre: "Ing. Iván de Jesús Ramírez López", cargo: "Coordinador de Sistemas", tel: "9613419909", wa: "529613419909" },
+            { nombre: "Ing. Iván de Jesús Ramírez López", cargo: "Coordinador de Sistemas", tel: "9613419909", wa: "529613419909" }
         ]
     },
     {
         departamento: "Vinculación",
         personal: [
-            { nombre: "Lic. Carolina Moguel Ramos", cargo: "Coordinadora de Vinculación", tel: "9612735792", wa: "529612735792" },
+            { nombre: "Lic. Carolina Moguel Ramos", cargo: "Coordinadora de Vinculación", tel: "9612735792", wa: "529612735792" }
         ]
     },
     {
         departamento: "Estrategias digitales",
         personal: [
-            { nombre: "Lic. Luis Enrique Sánchez Hidalgo", cargo: "Coordinador", tel: "9614628790", wa: "529614628790" },
+            { nombre: "Lic. Luis Enrique Sánchez Hidalgo", cargo: "Coordinador", tel: "9614628790", wa: "529614628790" }
+        ]
+    },
+    {
+        departamento: "Coordinación de Prácticas Profesionales y Servicio Social de Enfermería",
+        personal: [
+            { nombre: "Mtra. Aylin Itzel Cruz Mota", cargo: "Coordinadora", tel: "9614471381", wa: "529614471381" }
         ]
     }
 ];
 
 const LOGO_URL = "https://res.cloudinary.com/du9yqkkdg/image/upload/v1768422714/LOGO_TUT_COLOR_SIN_FONDO_1_1_qfyne4.png";
 ---
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Directorio TecUni | Coordinaciones</title>
+    <title>Directorio Ejecutivo | TecUni 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Orbes decorativos de fondo para crear el efecto Glassmorphism Pro -->
+    <div class="glass-bg-orb orb-1"></div>
+    <div class="glass-bg-orb orb-2"></div>
+
     <main>
         <header class="main-header">
-            <img src={LOGO_URL} alt="Logo Tecnológico Universitario Tuxtla" class="logo">
-            <div class="divider"></div>
-            <h1 class="welcome-title">¡Hola, Comunidad Tecuni!</h1>
-            <p class="welcome-text">
-                Estamos aquí para apoyarte en tu camino profesional. En este directorio oficial, encontrarás el contacto directo con nuestras coordinaciones.
-            </p>
-            <p class="tagline">Directorio Oficial de Coordinaciones</p>
+            <div class="logo-box">
+                <img src={LOGO_URL} alt="Logo Tecnológico Universitario Tuxtla" class="logo">
+            </div>
+            <h1 class="welcome-title">Directorio Oficial</h1>
+            <p class="welcome-text">Panel interactivo de coordinaciones y vinculación institucional.</p>
         </header>
         
         <div class="search-box">
-            <div class="pill">
+            <div class="search-wrapper">
                 <span class="search-icon">🔍</span>
-                <input type="text" id="buscador" placeholder="Buscar área, coordinador o nombre...">
+                <input type="text" id="buscador" placeholder="Buscar área, coordinador o puesto...">
             </div>
         </div>
 
         <div class="deptos-grid">
             {directorio.map((depto) => (
-                <div class="depto-card">
+                <div class="depto-card" data-tilt>
                     <button class="trigger">
                         <div class="depto-info">
                             <span class="depto-name">{depto.departamento}</span>
-                            <span class="depto-count">{depto.personal.length} {depto.personal.length === 1 ? 'Integrante' : 'Integrantes'}</span>
+                            <span class="depto-count">
+                                {depto.personal.length} {depto.personal.length === 1 ? 'Contacto' : 'Contactos'}
+                            </span>
                         </div>
                         <div class="chevron">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="m6 9 6 6 6-6"/></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                         </div>
                     </button>
 
                     <div class="panel">
-                        <div class="personal-stack">
-                            {depto.personal.map((p) => (
-                                <div class="user-item">
-                                    <div class="user-meta">
-                                        <div class="user-avatar">
-                                            {p.nombre.includes('Mtro.') || p.nombre.includes('Mtra.') ? p.nombre[6] : p.nombre[5]}
+                        <div class="panel-inner">
+                            <div class="personal-stack">
+                                {depto.personal.map((p) => (
+                                    <div class="user-item">
+                                        <div class="user-meta">
+                                            <div class="user-avatar">
+                                                {p.cargo.charAt(0)}
+                                            </div>
+                                            <div class="user-data">
+                                                <span class="user-role">{p.cargo}</span>
+                                                <h3>{p.nombre}</h3>
+                                            </div>
                                         </div>
-                                        <div class="user-data">
-                                            <h3>{p.nombre}</h3>
-                                            <span class="user-role">{p.cargo}</span>
+                                        <div class="user-actions">
+                                            <a href={`tel:${p.tel}`} class="btn-call">
+                                                <span>Llamar</span>
+                                            </a>
+                                            <a href={`https://wa.me/${p.wa}`} target="_blank" class="btn-wa">
+                                                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WA" width="14">
+                                                <span>WhatsApp</span>
+                                            </a>
                                         </div>
                                     </div>
-                                    <div class="user-actions">
-                                        <a href={`tel:${p.tel}`} class="btn-call" title="Llamar por teléfono">📞 Llamar</a>
-                                        <a href={`https://wa.me/${p.wa}`} target="_blank" class="icon-btn wa" title="Enviar WhatsApp">
-                                            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" width="16">
-                                            <span>WhatsApp</span>
-                                        </a>
-                                    </div>
-                                </div>
-                            ))}
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -128,116 +141,274 @@ const LOGO_URL = "https://res.cloudinary.com/du9yqkkdg/image/upload/v1768422714/
 
 <style>
     :root {
-        --tut-blue: #1e2261;
-        --tut-bg: #f8fafc;
-        --text-main: #1e293b;
-        --text-light: #64748b;
+        --bg-blur: rgba(255, 255, 255, 0.45);
+        --card-glass: rgba(15, 23, 42, 0.04);
+        --card-border: rgba(255, 255, 255, 0.6);
+        --text-main: #0f172a;
+        --text-muted: #475569;
+        --tut-navy: #1e2261;
+        --wa-green: #16a34a;
     }
 
-    * { box-sizing: border-box; transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+    * { 
+        box-sizing: border-box; 
+        margin: 0; 
+        padding: 0; 
+    }
 
     body {
-        margin: 0; background: var(--tut-bg); color: var(--text-main);
+        background-color: #f1f5f9;
+        color: var(--text-main);
         font-family: 'Plus Jakarta Sans', sans-serif;
-        line-height: 1.6;
+        line-height: 1.4;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
     }
 
-    main { max-width: 900px; margin: 0 auto; padding: 3rem 1rem; }
-
-    .main-header { text-align: center; margin-bottom: 2.5rem; padding: 0 1rem; }
-    .logo { max-width: 260px; height: auto; margin-bottom: 1rem; }
-    .divider { width: 40px; height: 3px; background: var(--tut-blue); margin: 0.5rem auto 1.5rem; border-radius: 10px; }
-    
-    .welcome-title { font-size: 1.6rem; font-weight: 800; color: var(--tut-blue); margin: 0 0 0.5rem 0; }
-    .welcome-text { font-size: 0.95rem; color: var(--text-light); max-width: 600px; margin: 0 auto 2rem auto; }
-    .tagline { font-size: 0.7rem; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 2px; }
-
-    .search-box { position: sticky; top: 1rem; z-index: 100; margin-bottom: 2.5rem; max-width: 500px; margin-inline: auto; }
-    .pill {
-        background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
-        border: 1px solid #e2e8f0; border-radius: 20px; display: flex; align-items: center; padding: 4px 18px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    /* Orbes de fondo dinámicos */
+    .glass-bg-orb {
+        position: fixed;
+        border-radius: 50%;
+        filter: blur(90px);
+        z-index: -1;
+        opacity: 0.45;
     }
-    #buscador { width: 100%; padding: 12px; border: none; background: transparent; outline: none; font-size: 0.95rem; }
+    .orb-1 { width: 400px; height: 400px; background: #60a5fa; top: -10%; left: -10%; }
+    .orb-2 { width: 500px; height: 500px; background: #93c5fd; bottom: -10%; right: -10%; }
 
+    main { 
+        max-width: 950px; 
+        margin: 0 auto; 
+        padding: 4rem 1.5rem; 
+        position: relative;
+        z-index: 2;
+    }
+
+    /* HEADER */
+    .main-header { text-align: center; margin-bottom: 3rem; }
+    .logo-box {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        border: 1px solid var(--card-border);
+        padding: 12px 24px;
+        display: inline-block;
+        border-radius: 20px;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+    .logo { max-width: 220px; height: auto; display: block; }
+    .welcome-title { font-size: 2.2rem; font-weight: 800; color: var(--tut-navy); letter-spacing: -1px; }
+    .welcome-text { font-size: 1rem; color: var(--text-muted); font-weight: 500; margin-top: 0.3rem; }
+
+    /* BUSCADOR PREMIUM GLASS */
+    .search-box { position: sticky; top: 1.5rem; z-index: 100; margin-bottom: 3.5rem; max-width: 540px; margin-inline: auto; }
+    .search-wrapper {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid var(--card-border); 
+        border-radius: 20px; 
+        display: flex; 
+        align-items: center; 
+        padding: 0 1.25rem;
+        box-shadow: 0 20px 40px -15px rgba(0,0,0,0.08);
+        transition: all 0.3s ease;
+    }
+    .search-wrapper:focus-within {
+        border-color: var(--tut-navy);
+        background: rgba(255, 255, 255, 0.85);
+        transform: translateY(-2px);
+    }
+    .search-icon { color: var(--text-muted); font-size: 1.05rem; }
+    #buscador { 
+        width: 100%; 
+        padding: 16px 12px; 
+        border: none; 
+        background: transparent; 
+        outline: none; 
+        font-size: 1rem; 
+        color: var(--text-main);
+        font-family: inherit;
+        font-weight: 600;
+    }
+
+    /* GRID & TARJETAS GLASS */
     .deptos-grid { 
         display: grid; 
         grid-template-columns: repeat(2, 1fr); 
-        gap: 16px; 
+        gap: 20px; 
         align-items: start;
     }
 
-    .depto-card { background: #fff; border: 1px solid #edf2f7; border-radius: 24px; overflow: hidden; height: fit-content; }
+    .depto-card { 
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid var(--card-border);
+        border-radius: 24px; 
+        overflow: hidden;
+        box-shadow: 0 10px 30px -10px rgba(0,0,0,0.04);
+        transform-style: preserve-3d;
+        perspective: 1000px;
+        transition: border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
+    }
+    .depto-card:hover {
+        background: rgba(255, 255, 255, 0.55);
+        border-color: rgba(30, 34, 97, 0.2);
+        box-shadow: 0 20px 40px -10px rgba(30, 34, 97, 0.08);
+    }
+    
     .trigger {
-        width: 100%; padding: 1.4rem; border: none; background: transparent; cursor: pointer;
-        display: flex; align-items: center; justify-content: space-between;
-    }
-    .depto-card.active { border-color: var(--tut-blue); box-shadow: 0 12px 24px rgba(30, 34, 97, 0.08); }
-    .depto-card.active .chevron { transform: rotate(180deg); color: var(--tut-blue); }
-
-    .depto-name { display: block; text-align: left; font-weight: 800; color: var(--tut-blue); font-size: 1.05rem; }
-    .depto-count { display: block; text-align: left; font-size: 0.75rem; color: var(--text-light); font-weight: 600; }
-
-    .panel { max-height: 0; overflow: hidden; background: #fafbfc; transition: max-height 0.5s ease-out; }
-    .depto-card.active .panel { max-height: 2500px; padding-bottom: 1.25rem; }
-
-    .personal-stack { padding: 0 1.25rem; display: flex; flex-direction: column; gap: 10px; }
-    .user-item {
-        background: #fff; border: 1px solid #f1f5f9; border-radius: 16px; padding: 1rem;
-        display: flex; flex-direction: column; gap: 0.8rem;
-    }
-    .user-meta { display: flex; align-items: center; gap: 0.8rem; }
-    .user-avatar {
-        width: 38px; height: 38px; background: #f0f4ff; color: var(--tut-blue);
-        border-radius: 12px; display: flex; align-items: center; justify-content: center;
-        font-weight: 800; font-size: 0.9rem; flex-shrink: 0;
-    }
-    h3 { margin: 0; font-size: 0.85rem; font-weight: 700; color: #0f172a; line-height: 1.3; }
-    .user-role { font-size: 0.65rem; color: var(--text-light); font-weight: 700; text-transform: uppercase; }
-
-    .user-actions { 
+        width: 100%; 
+        padding: 1.6rem; 
+        border: none; 
+        background: transparent; 
+        cursor: pointer;
         display: flex; 
-        gap: 10px; 
-        padding-top: 0.8rem; 
-        border-top: 1px solid #f8fafc;
+        align-items: center; 
+        justify-content: space-between;
     }
-    .btn-call, .icon-btn {
+    
+    .depto-card.active { 
+        background: rgba(255, 255, 255, 0.7); 
+        border-color: var(--tut-navy);
+    }
+    .depto-card.active .chevron { transform: rotate(180deg); color: var(--tut-navy); }
+    .chevron { color: var(--text-muted); display: flex; align-items: center; transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+
+    .depto-name { display: block; text-align: left; font-weight: 800; color: var(--tut-navy); font-size: 1.1rem; letter-spacing: -0.3px; }
+    .depto-count { display: block; text-align: left; font-size: 0.75rem; color: var(--text-muted); font-weight: 700; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+    /* CONTENEDOR ANIDADO Y ANIMADO POR JS */
+    .panel { 
+        max-height: 0; 
+        overflow: hidden; 
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+    }
+    .panel-inner {
+        padding: 0 1.5rem 1.5rem 1.5rem;
+    }
+
+    /* ITEMS INTERNOS DE USUARIO */
+    .personal-stack { display: flex; flex-direction: column; gap: 12px; }
+    .user-item {
+        background: rgba(255, 255, 255, 0.5);
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        border-radius: 16px; 
+        padding: 1.25rem;
+        display: flex; 
+        flex-direction: column; 
+        gap: 1rem;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.01);
+    }
+    
+    .user-meta { display: flex; align-items: center; gap: 1rem; }
+    .user-avatar {
+        width: 42px; 
+        height: 42px; 
+        background: var(--tut-navy);
+        color: #ffffff;
+        border-radius: 12px; 
+        display: flex; 
+        align-items: center; 
+        justify-content: center;
+        font-weight: 800; 
+        font-size: 1.1rem; 
+        flex-shrink: 0;
+    }
+    
+    .user-data h3 { font-size: 0.95rem; font-weight: 700; color: var(--text-main); line-height: 1.3; text-align: left; }
+    .user-role { font-size: 0.68rem; color: var(--text-muted); font-weight: 800; text-transform: uppercase; display: block; margin-bottom: 2px; text-align: left; letter-spacing: 0.5px; }
+
+    /* ACCIONES COMPONENTES UI */
+    .user-actions { display: flex; gap: 10px; }
+    .btn-call, .btn-wa {
         flex: 1;
-        height: 38px; border-radius: 12px; display: flex; align-items: center;
-        justify-content: center; text-decoration: none; font-size: 0.75rem; font-weight: 700; border: 1px solid #e2e8f0;
-        gap: 6px;
+        height: 40px; 
+        border-radius: 12px; 
+        display: inline-flex; 
+        align-items: center;
+        justify-content: center; 
+        text-decoration: none; 
+        font-size: 0.8rem; 
+        font-weight: 700; 
+        gap: 8px;
+        transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
     }
-    .btn-call { background: var(--tut-blue); color: white; border: none; }
-    .wa { background: #e8f9ee; border-color: #d1f2db; color: #15803d; }
+    .btn-call:active, .btn-wa:active { transform: scale(0.97); }
+    
+    .btn-call { background: #ffffff; color: var(--text-main); border: 1px solid var(--card-border); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+    .btn-call:hover { background: #fafafa; border-color: #cbd5e1; }
+    
+    .btn-wa { background: #e8f7ee; color: var(--wa-green); border: 1px solid #bbf7d0; }
+    .btn-wa:hover { background: var(--wa-green); color: #ffffff; box-shadow: 0 4px 12px rgba(22, 163, 74, 0.2); }
 
-    .footer { text-align: center; margin-top: 5rem; padding-bottom: 3rem; opacity: 0.6; }
-    .footer p { font-size: 0.75rem; font-weight: 700; margin: 0; }
-    .footer span { font-size: 0.65rem; font-weight: 800; letter-spacing: 2px; }
+    /* FOOTER */
+    .footer { text-align: center; margin-top: 6rem; padding-bottom: 2rem; opacity: 0.6; }
+    .footer p { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); }
+    .footer span { font-size: 0.65rem; font-weight: 800; color: var(--tut-navy); letter-spacing: 2px; display: block; margin-top: 4px; }
 
-    @media (max-width: 750px) {
-        .deptos-grid { grid-template-columns: 1fr; }
-        .welcome-title { font-size: 1.4rem; }
+    @media (max-width: 800px) {
+        .deptos-grid { grid-template-columns: 1fr; gap: 16px; }
+        .welcome-title { font-size: 1.8rem; }
     }
 </style>
 
 <script>
+    // 1. CONTROLADOR DE ACORDEÓN ULTRA FLUIDO CON JS (Calculo de pixeles nativos)
     document.querySelectorAll('.trigger').forEach(btn => {
         btn.addEventListener('click', () => {
-            btn.parentElement.classList.toggle('active');
+            const card = btn.parentElement;
+            const panel = card.querySelector('.panel');
+            
+            card.classList.toggle('active');
+            
+            if (card.classList.contains('active')) {
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            } else {
+                panel.style.maxHeight = "0px";
+            }
         });
     });
 
-    const search = document.getElementById('buscador');
+    // 2. EFECTO SUTIL DE PARALAJE/3D TILT AL PASAR EL RATÓN (Puro UI/UX moderno)
     const cards = document.querySelectorAll('.depto-card');
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            if (window.innerWidth < 768) return; // Desactivar en móvil por usabilidad
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left - (rect.width / 2);
+            const y = e.clientY - rect.top - (rect.height / 2);
+            
+            // Inclinación máxima de 3 grados para mantener la sutileza ejecutiva
+            card.style.transform = `rotateX(${-y / 40}deg) rotateY(${x / 40}deg) translateY(-2px)`;
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'none';
+        });
+    });
 
+    // 3. BUSCADOR INTEGRADO CON DESPLIEGUE DINÁMICO REACCIONARIO
+    const search = document.getElementById('buscador');
     search?.addEventListener('input', () => {
-        const val = search.value.toLowerCase();
+        const val = search.value.toLowerCase().trim();
+        
         cards.forEach(card => {
             const text = card.textContent?.toLowerCase() || '';
+            const panel = card.querySelector('.panel');
             const isMatch = text.includes(val);
+            
             card.style.display = isMatch ? 'block' : 'none';
-            if (val !== '' && isMatch) card.classList.add('active');
-            else if (val === '') card.classList.remove('active');
+            
+            if (val !== '' && isMatch) {
+                card.classList.add('active');
+                panel.style.maxHeight = panel.scrollHeight + "px";
+            } else if (val === '') {
+                card.classList.remove('active');
+                panel.style.maxHeight = "0px";
+            }
         });
     });
 </script>
